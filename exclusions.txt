@@ -1,0 +1,6 @@
+Music/
+Downloads/
+Library/
+QtSDK/
+Applications/
+
