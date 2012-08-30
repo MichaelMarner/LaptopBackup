@@ -37,7 +37,7 @@ DESTINATION="rsync://brick/Archive/Sellout/"
 #
 # Rsync options... You probably don't need to modify this
 #
-RSYNC_OPTIONS="-av --progress --delete --delete-excluded"
+RSYNC_OPTIONS="-anv --progress --delete --delete-excluded"
 
 ##############################################################################
 ###            DON'T EDIT BEYOND THIS POINT UNLESS YOU KNOW WHAT           ###
@@ -45,5 +45,14 @@ RSYNC_OPTIONS="-av --progress --delete --delete-excluded"
 ##############################################################################
 
 
+# Test whether we are on the desired wifi network
+CURRENT_WIFI=`networksetup -getairportnetwork $WIFI_ADAPTER`
+echo "$CURRENT_WIFI" | grep $BACKUP_NETWORK
 
-rsync $RSYNC_OPTIONS --exclude-from $EXCLUDE_FILE $SOURCE_DIRECTORY $DESTINATION
+if [ $? -eq 0 ]; then 
+	echo "On desired network, continuing"
+	rsync $RSYNC_OPTIONS --exclude-from $EXCLUDE_FILE $SOURCE_DIRECTORY $DESTINATION
+else
+	echo "Not on desired network, bailing"
+fi
+
