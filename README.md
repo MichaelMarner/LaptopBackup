@@ -9,6 +9,11 @@ Features
 
  * Only backup if on a specified wireless network
  * Only backup if last backup was X time ago.
+
+
+License
+=======
+
 Copyright (C) 2012 Michael Marner
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
