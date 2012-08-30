@@ -3,4 +3,5 @@ Downloads/
 Library/
 QtSDK/
 Applications/
+Dropbox
 
