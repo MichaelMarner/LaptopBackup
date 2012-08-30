@@ -63,10 +63,6 @@ DAY=86400
 WEEK=604800
 MONTH=2592000
 
-# Test whether we are on the desired wifi network
-CURRENT_WIFI=`networksetup -getairportnetwork $WIFI_ADAPTER`
-echo "$CURRENT_WIFI" | grep $BACKUP_NETWORK
-
 CURRENT_TIME=`date +%s`
 echo "Current time: $CURRENT_TIME"
 
@@ -126,6 +122,11 @@ case $BACKUP_FREQUENCY in
 			exit 1
 		fi
 esac
+
+
+# Test whether we are on the desired wifi network
+CURRENT_WIFI=`networksetup -getairportnetwork $WIFI_ADAPTER`
+echo "$CURRENT_WIFI" | grep $BACKUP_NETWORK
 
 
 if [ $? -eq 0 ]; then 
